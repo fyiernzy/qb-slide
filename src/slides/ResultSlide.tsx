@@ -40,7 +40,7 @@ function ResultPanel({ team, resultVotes, winnerSide }: ResultPanelProps) {
   return (
     <article className={`result-panel ${team.side} ${isWinner ? 'winner' : ''}`}>
       <span>{team.sideLabel}</span>
-      <strong>{resultVotes ?? '—'}</strong>
+      <strong>{resultVotes ?? '-'}</strong>
       <p>{team.universityName}</p>
       {isWinner ? <em>胜</em> : null}
     </article>

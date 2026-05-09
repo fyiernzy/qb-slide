@@ -1,7 +1,7 @@
 import { useSyncExternalStore } from 'react'
 import { mockMatch } from '../domain/mockMatch'
 import { buildRunOfShow } from '../domain/segments'
-import type { PresentationState } from '../domain/types'
+import type { MatchData, PresentationState, RunOfShowState } from '../domain/types'
 import {
   createInitialPresentationState,
   normalizePresentationState,
@@ -11,10 +11,12 @@ import {
 
 const CHANNEL_NAME = 'qb-slide-presentation'
 const STORAGE_KEY = 'qb-slide-state-v1'
-const slides = buildRunOfShow(mockMatch)
 const listeners = new Set<() => void>()
+const fallbackSlides = buildRunOfShow(mockMatch)
 
-let snapshot = createInitialPresentationState(mockMatch, slides)
+let currentMatch = mockMatch
+let currentSlides = fallbackSlides
+let snapshot = createInitialPresentationState(currentMatch, currentSlides)
 let channel: BroadcastChannel | null = null
 let initialized = false
 
@@ -24,17 +26,17 @@ const notify = () => {
   }
 }
 
-const readStoredState = () => {
+const readStoredState = (match: MatchData, slides: RunOfShowState[]) => {
   const stored = window.localStorage.getItem(STORAGE_KEY)
 
   if (!stored) {
-    return createInitialPresentationState(mockMatch, slides)
+    return createInitialPresentationState(match, slides)
   }
 
   try {
-    return normalizePresentationState(mockMatch, slides, JSON.parse(stored)) ?? createInitialPresentationState(mockMatch, slides)
+    return normalizePresentationState(match, slides, JSON.parse(stored)) ?? createInitialPresentationState(match, slides)
   } catch {
-    return createInitialPresentationState(mockMatch, slides)
+    return createInitialPresentationState(match, slides)
   }
 }
 
@@ -43,17 +45,29 @@ const persistState = (state: PresentationState) => {
   channel?.postMessage(state)
 }
 
-const ensureInitialized = () => {
+const setContext = (match: MatchData, slides: RunOfShowState[]) => {
+  if (match === currentMatch && slides === currentSlides) {
+    return
+  }
+
+  currentMatch = match
+  currentSlides = slides
+  snapshot = normalizePresentationState(currentMatch, currentSlides, snapshot) ?? createInitialPresentationState(match, slides)
+}
+
+const ensureInitialized = (match = currentMatch, slides = currentSlides) => {
+  setContext(match, slides)
+
   if (initialized || typeof window === 'undefined') {
     return
   }
 
   initialized = true
-  snapshot = readStoredState()
+  snapshot = readStoredState(currentMatch, currentSlides)
   channel = new BroadcastChannel(CHANNEL_NAME)
 
   channel.onmessage = (event: MessageEvent<unknown>) => {
-    const nextState = normalizePresentationState(mockMatch, slides, event.data)
+    const nextState = normalizePresentationState(currentMatch, currentSlides, event.data)
 
     if (!nextState || nextState.updatedAt < snapshot.updatedAt) {
       return
@@ -69,7 +83,7 @@ const ensureInitialized = () => {
     }
 
     try {
-      const nextState = normalizePresentationState(mockMatch, slides, JSON.parse(event.newValue))
+      const nextState = normalizePresentationState(currentMatch, currentSlides, JSON.parse(event.newValue))
 
       if (nextState) {
         snapshot = nextState
@@ -90,22 +104,34 @@ const subscribe = (listener: () => void) => {
   }
 }
 
-const getSnapshot = () => {
-  ensureInitialized()
+export const getPresentationSnapshot = () => {
   return snapshot
 }
 
-export const dispatchPresentationAction = (action: PresentationAction) => {
-  ensureInitialized()
+export const resetPresentationStateForMatch = (match: MatchData, slides: RunOfShowState[]) => {
+  ensureInitialized(match, slides)
+  snapshot = createInitialPresentationState(match, slides)
+  persistState(snapshot)
+  notify()
+}
+
+export const dispatchPresentationAction = (
+  action: PresentationAction,
+  match = currentMatch,
+  slides = currentSlides,
+) => {
+  ensureInitialized(match, slides)
   snapshot = {
-    ...reducePresentationState(mockMatch, slides, snapshot, action),
+    ...reducePresentationState(currentMatch, currentSlides, snapshot, action),
     updatedAt: Date.now(),
   }
   persistState(snapshot)
   notify()
 }
 
-export const usePresentationStore = () => {
-  const state = useSyncExternalStore(subscribe, getSnapshot)
-  return [state, dispatchPresentationAction] as const
+export const usePresentationStore = (match: MatchData, slides: RunOfShowState[]) => {
+  ensureInitialized(match, slides)
+  const state = useSyncExternalStore(subscribe, getPresentationSnapshot)
+  const dispatch = (action: PresentationAction) => dispatchPresentationAction(action, match, slides)
+  return [state, dispatch] as const
 }

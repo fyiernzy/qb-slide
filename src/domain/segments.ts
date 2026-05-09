@@ -12,7 +12,7 @@ export const buildRunOfShow = (match: MatchData): RunOfShowState[] => [
     segmentId: segment.id,
   })),
   { id: 'vote-reveal', kind: 'vote-reveal', label: '决选票公布' },
-  { id: 'result', kind: 'result', label: '总结果' },
+  { id: 'result', kind: 'result', label: '总结结果' },
 ]
 
 export const findSlideIndex = (slides: RunOfShowState[], slideId: string) =>

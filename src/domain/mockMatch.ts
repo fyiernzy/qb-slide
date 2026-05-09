@@ -49,7 +49,7 @@ export const mockMatch: MatchData = {
       sideLabel: '正方',
       displayName: '明辨队',
       universityName: '马来亚大学',
-      initials: 'MU',
+      initials: 'UM',
       debaters: [
         debater('zheng-1', '陈子涵', '法律学', '#1d4ed8'),
         debater('zheng-2', '林嘉怡', '心理学', '#2563eb'),
@@ -66,7 +66,7 @@ export const mockMatch: MatchData = {
       initials: 'UPM',
       debaters: [
         debater('fan-1', '张伟伦', '政治学', '#b91c1c'),
-        debater('fan-2', '李欣妤', '教育学', '#dc2626'),
+        debater('fan-2', '李欣彤', '教育学', '#dc2626'),
         debater('fan-3', '周凯文', '电脑科学', '#991b1b'),
         debater('fan-4', '许佳恩', '社会学', '#ef4444'),
       ],

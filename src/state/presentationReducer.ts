@@ -5,6 +5,7 @@ export type PresentationAction =
   | { type: 'go-to-slide'; slideId: string }
   | { type: 'next-slide' }
   | { type: 'previous-slide' }
+  | { type: 'start-presentation' }
   | { type: 'reveal-vote'; judgeId: string; side: SideId }
   | { type: 'clear-vote'; judgeId: string }
   | { type: 'reset-votes' }
@@ -21,6 +22,7 @@ export const createInitialPresentationState = (
   votes: createEmptyVotes(match),
   changedJudgeId: null,
   resultRevealed: false,
+  configurationLocked: false,
   updatedAt: Date.now(),
   version: 1,
 })
@@ -68,6 +70,7 @@ export const normalizePresentationState = (
     votes: normalizeVotes(match, rawState.votes),
     changedJudgeId,
     resultRevealed: Boolean(rawState.resultRevealed),
+    configurationLocked: Boolean(rawState.configurationLocked),
     updatedAt: typeof rawState.updatedAt === 'number' ? rawState.updatedAt : Date.now(),
     version: 1,
   }
@@ -81,6 +84,13 @@ export const reducePresentationState = (
 ): PresentationState => {
   if (action.type === 'reset-all') {
     return createInitialPresentationState(match, slides)
+  }
+
+  if (action.type === 'start-presentation') {
+    return {
+      ...state,
+      configurationLocked: true,
+    }
   }
 
   if (action.type === 'reset-votes') {

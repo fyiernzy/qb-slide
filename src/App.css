@@ -6,12 +6,19 @@
 
 .launcher-shell {
   display: grid;
-  grid-template-columns: minmax(320px, 0.85fr) minmax(560px, 1.15fr);
-  gap: 32px;
-  align-items: center;
+  grid-template-columns: minmax(360px, 0.82fr) minmax(640px, 1.18fr);
+  gap: 24px;
+  align-items: stretch;
   padding: 40px;
   color: var(--cream);
   background: linear-gradient(135deg, #16202a 0%, #25313c 54%, #111827 100%);
+}
+
+.launcher-summary {
+  display: grid;
+  align-content: center;
+  gap: 20px;
+  min-width: 0;
 }
 
 .launcher-copy {
@@ -22,7 +29,7 @@
 .launcher-copy h1 {
   margin: 0;
   max-width: 760px;
-  font-size: 4.4rem;
+  font-size: 3.4rem;
   line-height: 1.05;
   letter-spacing: 0;
 }
@@ -41,6 +48,11 @@
   border: 1px solid rgba(248, 250, 252, 0.18);
   border-radius: 8px;
   background: rgba(248, 250, 252, 0.08);
+}
+
+.launcher-status.has-errors {
+  border-color: rgba(248, 113, 113, 0.36);
+  background: rgba(127, 29, 29, 0.22);
 }
 
 .launcher-status span {
@@ -85,13 +97,13 @@ button:disabled {
   padding: 0 18px;
 }
 
-.launcher-actions button + button,
+.launcher-actions button:not(:first-child),
 .recovery-controls button {
   color: var(--ink);
   background: #e5e7eb;
 }
 
-.launcher-actions button + button:hover,
+.launcher-actions button:not(:first-child):hover,
 .recovery-controls button:hover {
   background: #d1d5db;
 }
@@ -99,6 +111,118 @@ button:disabled {
 .launcher-preview,
 .controller-preview {
   min-width: 0;
+}
+
+.match-config-pane {
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  min-width: 0;
+  max-height: calc(100svh - 80px);
+  overflow: auto;
+  padding: 18px;
+  border: 1px solid rgba(248, 250, 252, 0.2);
+  border-radius: 8px;
+  background: rgba(248, 250, 252, 0.96);
+  color: var(--ink);
+}
+
+.config-pane-header,
+.side-config header,
+.judge-config header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+}
+
+.config-pane-header h2,
+.side-config h3,
+.judge-config h3 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.config-pane-header h2 {
+  font-size: 1.35rem;
+}
+
+.config-pane-header span,
+.side-config header span,
+.judge-config header span {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-align: right;
+}
+
+.team-config-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.side-config,
+.judge-config {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.side-config header p,
+.judge-config header p,
+.config-pane-header p {
+  margin: 0 0 2px;
+}
+
+.side-config.zheng {
+  border-top: 4px solid var(--zheng);
+}
+
+.side-config.fan {
+  border-top: 4px solid var(--fan);
+}
+
+.side-config label,
+.judge-config label {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.side-config label span,
+.judge-config label span {
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+select {
+  width: 100%;
+  min-height: 42px;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 12px;
+  color: var(--ink);
+  background: #f8fafc;
+}
+
+select:disabled {
+  cursor: not-allowed;
+  color: #94a3b8;
+  background: #e5e7eb;
+}
+
+.debater-order-grid,
+.judge-select-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
 }
 
 .audience-shell {
@@ -722,6 +846,10 @@ button:disabled {
     grid-template-columns: 1fr;
   }
 
+  .match-config-pane {
+    max-height: none;
+  }
+
   .controller-panel {
     max-height: none;
   }
@@ -735,6 +863,24 @@ button:disabled {
 
   .launcher-copy h1 {
     font-size: 2.5rem;
+  }
+
+  .team-config-grid,
+  .debater-order-grid,
+  .judge-select-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .config-pane-header,
+  .side-config header,
+  .judge-config header {
+    display: grid;
+  }
+
+  .config-pane-header span,
+  .side-config header span,
+  .judge-config header span {
+    text-align: left;
   }
 
   .controller-shell {

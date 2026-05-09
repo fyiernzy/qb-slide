@@ -1,0 +1,2 @@
+
+Interview me relentlyessly about every aspect of this plan until a shared understanding is reached. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer. Ask as many questions as needed until you're confident enough for the plan from all aspects. Do not assume anything if not clearly permitted.

@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 2 Configuration Pane Previews</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: '#172033',
+              line: '#d8dee8',
+              panel: '#f6f8fb',
+              zheng: '#1f5f8b',
+              fan: '#9f2f3f',
+              accent: '#2f7d61',
+            },
+            boxShadow: {
+              soft: '0 18px 50px rgba(23, 32, 51, 0.10)',
+            },
+          },
+        },
+      }
+    </script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <style>
+      select {
+        background-image:
+          linear-gradient(45deg, transparent 50%, #536071 50%),
+          linear-gradient(135deg, #536071 50%, transparent 50%);
+        background-position:
+          calc(100% - 18px) calc(50% - 3px),
+          calc(100% - 12px) calc(50% - 3px);
+        background-size:
+          6px 6px,
+          6px 6px;
+        background-repeat: no-repeat;
+      }
+    </style>
+  </head>
+  <body class="bg-[#eef2f6] text-ink antialiased">
+    <main class="mx-auto flex w-full max-w-[1680px] flex-col gap-10 px-5 py-6 sm:px-8 lg:px-10">
+      <header class="flex flex-col gap-4 border-b border-line pb-6 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Task 2 Preview</p>
+          <h1 class="mt-2 text-3xl font-semibold tracking-normal text-ink">赛前资料配置面板</h1>
+          <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+            三个 launcher 侧配置方案，均围绕正反方大学、辩手顺序与 5 位活跃评审建立。
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2 text-xs font-medium text-slate-600">
+          <span class="rounded-full border border-line bg-white px-3 py-1.5">4 所大学</span>
+          <span class="rounded-full border border-line bg-white px-3 py-1.5">每校 5 位辩手</span>
+          <span class="rounded-full border border-line bg-white px-3 py-1.5">7 位评审源</span>
+          <span class="rounded-full border border-line bg-white px-3 py-1.5">5 位活跃评审</span>
+        </div>
+      </header>
+
+      <section class="rounded-lg border border-line bg-white shadow-soft">
+        <div class="flex flex-col gap-2 border-b border-line px-5 py-4 sm:px-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Concept A</p>
+          <h2 class="text-xl font-semibold">分栏式 Launcher</h2>
+        </div>
+
+        <div class="grid gap-0 lg:grid-cols-[minmax(420px,0.95fr)_minmax(560px,1.35fr)]">
+          <aside class="border-b border-line bg-panel p-5 sm:p-6 lg:border-b-0 lg:border-r">
+            <div class="rounded-lg border border-line bg-white p-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">当前场次</p>
+              <h3 class="mt-2 text-2xl font-semibold">第二十届全国大专辩论会</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-600">
+                人工智能的发展对大学生而言利大于弊
+              </p>
+              <div class="mt-5 grid grid-cols-3 gap-2 text-center text-xs">
+                <div class="rounded-md border border-line bg-panel p-3">
+                  <strong class="block text-lg text-ink">0</strong>
+                  <span class="text-slate-500">错误</span>
+                </div>
+                <div class="rounded-md border border-line bg-panel p-3">
+                  <strong class="block text-lg text-ink">2</strong>
+                  <span class="text-slate-500">提醒</span>
+                </div>
+                <div class="rounded-md border border-line bg-panel p-3">
+                  <strong class="block text-lg text-ink">1/18</strong>
+                  <span class="text-slate-500">页面</span>
+                </div>
+              </div>
+              <div class="mt-5 flex gap-3">
+                <button class="inline-flex flex-1 items-center justify-center gap-2 rounded-md bg-ink px-4 py-2.5 text-sm font-semibold text-white">
+                  <i data-lucide="play" class="h-4 w-4"></i>
+                  开始演示
+                </button>
+                <button class="inline-flex items-center justify-center rounded-md border border-line bg-white px-3 py-2.5 text-slate-600" title="重置状态">
+                  <i data-lucide="rotate-ccw" class="h-4 w-4"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="mt-5 aspect-video overflow-hidden rounded-lg border border-line bg-[#162033] p-5 text-white">
+              <div class="flex h-full flex-col justify-between">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-300">Audience Preview</p>
+                  <h3 class="mt-4 text-3xl font-semibold">正方介绍</h3>
+                </div>
+                <div class="grid grid-cols-4 gap-3">
+                  <div class="rounded-md bg-white/12 p-3">
+                    <span class="text-xs text-slate-300">一辩</span>
+                    <strong class="mt-8 block">陈子涵</strong>
+                  </div>
+                  <div class="rounded-md bg-white/12 p-3">
+                    <span class="text-xs text-slate-300">二辩</span>
+                    <strong class="mt-8 block">林嘉怡</strong>
+                  </div>
+                  <div class="rounded-md bg-white/12 p-3">
+                    <span class="text-xs text-slate-300">三辩</span>
+                    <strong class="mt-8 block">黄俊杰</strong>
+                  </div>
+                  <div class="rounded-md bg-white/12 p-3">
+                    <span class="text-xs text-slate-300">四辩</span>
+                    <strong class="mt-8 block">吴诗敏</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <section class="p-5 sm:p-6">
+            <div class="grid gap-5 xl:grid-cols-2">
+              <article class="rounded-lg border border-line bg-white">
+                <div class="flex items-center justify-between border-b border-line px-4 py-3">
+                  <div>
+                    <p class="text-xs font-semibold text-zheng">正方</p>
+                    <h3 class="font-semibold">大学与辩手顺序</h3>
+                  </div>
+                  <span class="rounded-full bg-[#e8f3f7] px-3 py-1 text-xs font-semibold text-zheng">4/4 已选</span>
+                </div>
+                <div class="space-y-4 p-4">
+                  <label class="block">
+                    <span class="mb-1.5 block text-xs font-semibold text-slate-500">大学</span>
+                    <select class="h-10 w-full appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                      <option selected>马来亚大学 UM</option>
+                      <option>国民大学 UKM</option>
+                      <option>博特拉大学 UPM</option>
+                      <option>理科大学 USM</option>
+                    </select>
+                  </label>
+                  <div class="grid gap-3 sm:grid-cols-2">
+                    <label class="block">
+                      <span class="mb-1.5 block text-xs font-semibold text-slate-500">一辩</span>
+                      <select class="h-10 w-full appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                        <option selected>陈子涵 - 法律学</option>
+                      </select>
+                    </label>
+                    <label class="block">
+                      <span class="mb-1.5 block text-xs font-semibold text-slate-500">二辩</span>
+                      <select class="h-10 w-full appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                        <option selected>林嘉怡 - 心理学</option>
+                      </select>
+                    </label>
+                    <label class="block">
+                      <span class="mb-1.5 block text-xs font-semibold text-slate-500">三辩</span>
+                      <select class="h-10 w-full appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                        <option selected>黄俊杰 - 经济学</option>
+                      </select>
+                    </label>
+                    <label class="block">
+                      <span class="mb-1.5 block text-xs font-semibold text-slate-500">四辩</span>
+                      <select class="h-10 w-full appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                        <option selected>吴诗敏 - 传播学</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="rounded-md border border-dashed border-line bg-panel px-3 py-2 text-xs text-slate-500">
+                    未使用辩手：邓凯宁
+                  </div>
+                </div>
+              </article>
+
+              <article class="rounded-lg border border-line bg-white">
+                <div class="flex items-center justify-between border-b border-line px-4 py-3">
+                  <div>
+                    <p class="text-xs font-semibold text-fan">反方</p>
+                    <h3 class="font-semibold">大学与辩手顺序</h3>
+                  </div>
+                  <span class="rounded-full bg-[#f8e9eb] px-3 py-1 text-xs font-semibold text-fan">3/4 已选</span>
+                </div>
+                <div class="space-y-4 p-4">
+                  <label class="block">
+                    <span class="mb-1.5 block text-xs font-semibold text-slate-500">大学</span>
+                    <select class="h-10 w-full appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                      <option selected>博特拉大学 UPM</option>
+                      <option>国民大学 UKM</option>
+                      <option>理科大学 USM</option>
+                    </select>
+                  </label>
+                  <div class="grid gap-3 sm:grid-cols-2">
+                    <label class="block">
+                      <span class="mb-1.5 block text-xs font-semibold text-slate-500">一辩</span>
+                      <select class="h-10 w-full appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                        <option selected>张伟伦 - 政治学</option>
+                      </select>
+                    </label>
+                    <label class="block">
+                      <span class="mb-1.5 block text-xs font-semibold text-slate-500">二辩</span>
+                      <select class="h-10 w-full appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                        <option selected>李欣妤 - 教育学</option>
+                      </select>
+                    </label>
+                    <label class="block">
+                      <span class="mb-1.5 block text-xs font-semibold text-slate-500">三辩</span>
+                      <select class="h-10 w-full appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                        <option selected>周凯文 - 电脑科学</option>
+                      </select>
+                    </label>
+                    <label class="block">
+                      <span class="mb-1.5 block text-xs font-semibold text-slate-500">四辩</span>
+                      <select class="h-10 w-full appearance-none rounded-md border border-amber-300 bg-amber-50 px-3 text-sm">
+                        <option selected>请选择</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800">
+                    反方四辩尚未选择，开始演示前需要补齐。
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <article class="mt-5 rounded-lg border border-line bg-white">
+              <div class="flex flex-col gap-2 border-b border-line px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p class="text-xs font-semibold text-accent">评审</p>
+                  <h3 class="font-semibold">从 7 位名单中启用 5 位</h3>
+                </div>
+                <div class="inline-flex rounded-md border border-line bg-panel p-1 text-xs font-semibold">
+                  <button class="rounded bg-white px-3 py-1 shadow-sm">5 位</button>
+                  <button class="px-3 py-1 text-slate-500">4 位</button>
+                </div>
+              </div>
+              <div class="grid gap-3 p-4 sm:grid-cols-2 xl:grid-cols-5">
+                <select class="h-10 appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                  <option selected>王老师</option>
+                </select>
+                <select class="h-10 appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                  <option selected>刘老师</option>
+                </select>
+                <select class="h-10 appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                  <option selected>郑老师</option>
+                </select>
+                <select class="h-10 appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                  <option selected>蔡老师</option>
+                </select>
+                <select class="h-10 appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                  <option selected>杨老师</option>
+                </select>
+              </div>
+            </article>
+          </section>
+        </div>
+      </section>
+
+      <section class="rounded-lg border border-line bg-white shadow-soft">
+        <div class="flex flex-col gap-2 border-b border-line px-5 py-4 sm:px-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Concept B</p>
+          <h2 class="text-xl font-semibold">步骤式配置</h2>
+        </div>
+
+        <div class="grid gap-6 p-5 sm:p-6 lg:grid-cols-[280px_1fr]">
+          <nav class="space-y-2">
+            <button class="flex w-full items-center gap-3 rounded-md border border-zheng bg-[#e8f3f7] px-4 py-3 text-left">
+              <span class="grid h-7 w-7 place-items-center rounded-full bg-zheng text-xs font-bold text-white">1</span>
+              <span>
+                <strong class="block text-sm">正方</strong>
+                <span class="text-xs text-slate-500">UM, 4 位辩手</span>
+              </span>
+            </button>
+            <button class="flex w-full items-center gap-3 rounded-md border border-line bg-white px-4 py-3 text-left">
+              <span class="grid h-7 w-7 place-items-center rounded-full bg-fan text-xs font-bold text-white">2</span>
+              <span>
+                <strong class="block text-sm">反方</strong>
+                <span class="text-xs text-slate-500">UPM, 待补齐</span>
+              </span>
+            </button>
+            <button class="flex w-full items-center gap-3 rounded-md border border-line bg-white px-4 py-3 text-left">
+              <span class="grid h-7 w-7 place-items-center rounded-full bg-accent text-xs font-bold text-white">3</span>
+              <span>
+                <strong class="block text-sm">评审</strong>
+                <span class="text-xs text-slate-500">5/5 已启用</span>
+              </span>
+            </button>
+            <button class="flex w-full items-center gap-3 rounded-md border border-line bg-white px-4 py-3 text-left">
+              <span class="grid h-7 w-7 place-items-center rounded-full bg-slate-300 text-xs font-bold text-slate-700">4</span>
+              <span>
+                <strong class="block text-sm">检查</strong>
+                <span class="text-xs text-slate-500">1 项待处理</span>
+              </span>
+            </button>
+          </nav>
+
+          <div class="rounded-lg border border-line">
+            <div class="flex flex-col gap-3 border-b border-line bg-panel px-5 py-4 md:flex-row md:items-center md:justify-between">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Step 1</p>
+                <h3 class="text-lg font-semibold">配置正方出场顺序</h3>
+              </div>
+              <label class="w-full md:w-72">
+                <span class="sr-only">正方大学</span>
+                <select class="h-10 w-full appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                  <option selected>马来亚大学 UM</option>
+                  <option>国民大学 UKM</option>
+                  <option>博特拉大学 UPM</option>
+                  <option>理科大学 USM</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="grid gap-4 p-5 md:grid-cols-2 xl:grid-cols-4">
+              <article class="rounded-lg border border-line bg-white p-4">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-semibold text-slate-500">一辩</span>
+                  <button class="rounded-md border border-line p-1.5 text-slate-500" title="清除一辩">
+                    <i data-lucide="x" class="h-4 w-4"></i>
+                  </button>
+                </div>
+                <div class="mt-4 flex items-center gap-3">
+                  <div class="grid h-12 w-12 place-items-center rounded-md bg-[#dcecf4] font-bold text-zheng">陈</div>
+                  <div>
+                    <strong class="block">陈子涵</strong>
+                    <span class="text-xs text-slate-500">法律学</span>
+                  </div>
+                </div>
+              </article>
+              <article class="rounded-lg border border-line bg-white p-4">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-semibold text-slate-500">二辩</span>
+                  <button class="rounded-md border border-line p-1.5 text-slate-500" title="清除二辩">
+                    <i data-lucide="x" class="h-4 w-4"></i>
+                  </button>
+                </div>
+                <div class="mt-4 flex items-center gap-3">
+                  <div class="grid h-12 w-12 place-items-center rounded-md bg-[#dcecf4] font-bold text-zheng">林</div>
+                  <div>
+                    <strong class="block">林嘉怡</strong>
+                    <span class="text-xs text-slate-500">心理学</span>
+                  </div>
+                </div>
+              </article>
+              <article class="rounded-lg border border-line bg-white p-4">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-semibold text-slate-500">三辩</span>
+                  <button class="rounded-md border border-line p-1.5 text-slate-500" title="清除三辩">
+                    <i data-lucide="x" class="h-4 w-4"></i>
+                  </button>
+                </div>
+                <div class="mt-4 flex items-center gap-3">
+                  <div class="grid h-12 w-12 place-items-center rounded-md bg-[#dcecf4] font-bold text-zheng">黄</div>
+                  <div>
+                    <strong class="block">黄俊杰</strong>
+                    <span class="text-xs text-slate-500">经济学</span>
+                  </div>
+                </div>
+              </article>
+              <article class="rounded-lg border border-line bg-white p-4">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-semibold text-slate-500">四辩</span>
+                  <button class="rounded-md border border-line p-1.5 text-slate-500" title="清除四辩">
+                    <i data-lucide="x" class="h-4 w-4"></i>
+                  </button>
+                </div>
+                <div class="mt-4 flex items-center gap-3">
+                  <div class="grid h-12 w-12 place-items-center rounded-md bg-[#dcecf4] font-bold text-zheng">吴</div>
+                  <div>
+                    <strong class="block">吴诗敏</strong>
+                    <span class="text-xs text-slate-500">传播学</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="flex flex-col gap-3 border-t border-line px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+              <div class="text-sm text-slate-600">
+                重复选择辩手时，旧位置会自动清空。
+              </div>
+              <div class="flex gap-2">
+                <button class="rounded-md border border-line bg-white px-4 py-2 text-sm font-semibold text-slate-700">上一步</button>
+                <button class="rounded-md bg-ink px-4 py-2 text-sm font-semibold text-white">下一步</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rounded-lg border border-line bg-white shadow-soft">
+        <div class="flex flex-col gap-2 border-b border-line px-5 py-4 sm:px-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Concept C</p>
+          <h2 class="text-xl font-semibold">密集操作台</h2>
+        </div>
+
+        <div class="p-5 sm:p-6">
+          <div class="grid gap-4 xl:grid-cols-[1fr_360px]">
+            <div class="overflow-hidden rounded-lg border border-line">
+              <table class="w-full min-w-[860px] border-collapse text-left text-sm">
+                <thead class="bg-panel text-xs uppercase tracking-[0.12em] text-slate-500">
+                  <tr>
+                    <th class="border-b border-line px-4 py-3">阵营</th>
+                    <th class="border-b border-line px-4 py-3">大学</th>
+                    <th class="border-b border-line px-4 py-3">一辩</th>
+                    <th class="border-b border-line px-4 py-3">二辩</th>
+                    <th class="border-b border-line px-4 py-3">三辩</th>
+                    <th class="border-b border-line px-4 py-3">四辩</th>
+                    <th class="border-b border-line px-4 py-3">状态</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-line align-top">
+                    <td class="px-4 py-4">
+                      <span class="rounded-full bg-[#e8f3f7] px-3 py-1 text-xs font-semibold text-zheng">正方</span>
+                    </td>
+                    <td class="px-4 py-4">
+                      <select class="h-10 w-44 appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                        <option selected>马来亚大学 UM</option>
+                      </select>
+                    </td>
+                    <td class="px-4 py-4">
+                      <select class="h-10 w-40 appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                        <option selected>陈子涵</option>
+                      </select>
+                    </td>
+                    <td class="px-4 py-4">
+                      <select class="h-10 w-40 appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                        <option selected>林嘉怡</option>
+                      </select>
+                    </td>
+                    <td class="px-4 py-4">
+                      <select class="h-10 w-40 appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                        <option selected>黄俊杰</option>
+                      </select>
+                    </td>
+                    <td class="px-4 py-4">
+                      <select class="h-10 w-40 appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                        <option selected>吴诗敏</option>
+                      </select>
+                    </td>
+                    <td class="px-4 py-4">
+                      <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-accent">
+                        <i data-lucide="check" class="h-4 w-4"></i>
+                        完整
+                      </span>
+                    </td>
+                  </tr>
+                  <tr class="align-top">
+                    <td class="px-4 py-4">
+                      <span class="rounded-full bg-[#f8e9eb] px-3 py-1 text-xs font-semibold text-fan">反方</span>
+                    </td>
+                    <td class="px-4 py-4">
+                      <select class="h-10 w-44 appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                        <option selected>博特拉大学 UPM</option>
+                      </select>
+                    </td>
+                    <td class="px-4 py-4">
+                      <select class="h-10 w-40 appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                        <option selected>张伟伦</option>
+                      </select>
+                    </td>
+                    <td class="px-4 py-4">
+                      <select class="h-10 w-40 appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                        <option selected>李欣妤</option>
+                      </select>
+                    </td>
+                    <td class="px-4 py-4">
+                      <select class="h-10 w-40 appearance-none rounded-md border border-line bg-white px-3 text-sm">
+                        <option selected>周凯文</option>
+                      </select>
+                    </td>
+                    <td class="px-4 py-4">
+                      <select class="h-10 w-40 appearance-none rounded-md border border-amber-300 bg-amber-50 px-3 text-sm">
+                        <option selected>请选择</option>
+                      </select>
+                    </td>
+                    <td class="px-4 py-4">
+                      <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-700">
+                        <i data-lucide="alert-triangle" class="h-4 w-4"></i>
+                        待补齐
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <aside class="rounded-lg border border-line">
+              <div class="border-b border-line bg-panel px-4 py-3">
+                <h3 class="font-semibold">评审名单</h3>
+                <p class="mt-1 text-xs text-slate-500">已从 7 位中启用 5 位</p>
+              </div>
+              <div class="divide-y divide-line">
+                <label class="flex items-center gap-3 px-4 py-3">
+                  <input checked type="checkbox" class="h-4 w-4 accent-accent" />
+                  <span class="grid h-8 w-8 place-items-center rounded-md bg-slate-200 text-xs font-bold">王</span>
+                  <span class="text-sm font-medium">王老师</span>
+                </label>
+                <label class="flex items-center gap-3 px-4 py-3">
+                  <input checked type="checkbox" class="h-4 w-4 accent-accent" />
+                  <span class="grid h-8 w-8 place-items-center rounded-md bg-slate-200 text-xs font-bold">刘</span>
+                  <span class="text-sm font-medium">刘老师</span>
+                </label>
+                <label class="flex items-center gap-3 px-4 py-3">
+                  <input checked type="checkbox" class="h-4 w-4 accent-accent" />
+                  <span class="grid h-8 w-8 place-items-center rounded-md bg-slate-200 text-xs font-bold">郑</span>
+                  <span class="text-sm font-medium">郑老师</span>
+                </label>
+                <label class="flex items-center gap-3 px-4 py-3">
+                  <input checked type="checkbox" class="h-4 w-4 accent-accent" />
+                  <span class="grid h-8 w-8 place-items-center rounded-md bg-slate-200 text-xs font-bold">蔡</span>
+                  <span class="text-sm font-medium">蔡老师</span>
+                </label>
+                <label class="flex items-center gap-3 px-4 py-3">
+                  <input checked type="checkbox" class="h-4 w-4 accent-accent" />
+                  <span class="grid h-8 w-8 place-items-center rounded-md bg-slate-200 text-xs font-bold">杨</span>
+                  <span class="text-sm font-medium">杨老师</span>
+                </label>
+                <label class="flex items-center gap-3 px-4 py-3 text-slate-400">
+                  <input type="checkbox" class="h-4 w-4 accent-accent" />
+                  <span class="grid h-8 w-8 place-items-center rounded-md bg-slate-100 text-xs font-bold">陈</span>
+                  <span class="text-sm font-medium">陈老师</span>
+                </label>
+                <label class="flex items-center gap-3 px-4 py-3 text-slate-400">
+                  <input type="checkbox" class="h-4 w-4 accent-accent" />
+                  <span class="grid h-8 w-8 place-items-center rounded-md bg-slate-100 text-xs font-bold">黄</span>
+                  <span class="text-sm font-medium">黄老师</span>
+                </label>
+              </div>
+            </aside>
+          </div>
+
+          <div class="mt-5 flex flex-col gap-3 rounded-lg border border-line bg-panel p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div class="flex items-start gap-3">
+              <i data-lucide="info" class="mt-0.5 h-5 w-5 text-slate-500"></i>
+              <div>
+                <strong class="block text-sm">重复大学处理</strong>
+                <span class="text-sm text-slate-600">若反方改选 UM，正方大学与辩手顺序会被清空。</span>
+              </div>
+            </div>
+            <button class="inline-flex items-center justify-center gap-2 rounded-md bg-ink px-4 py-2 text-sm font-semibold text-white">
+              <i data-lucide="save" class="h-4 w-4"></i>
+              套用配置
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      lucide.createIcons()
+    </script>
+  </body>
+</html>

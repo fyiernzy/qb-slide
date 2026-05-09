@@ -96,6 +96,7 @@ export type PresentationState = {
   votes: VotesByJudge
   changedJudgeId: string | null
   resultRevealed: boolean
+  configurationLocked: boolean
   updatedAt: number
   version: 1
 }

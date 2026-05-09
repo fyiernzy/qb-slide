@@ -15,7 +15,7 @@ type ControllerViewProps = {
 }
 
 export function ControllerView({ match, slides, state, validation, dispatch }: ControllerViewProps) {
-  const currentIndex = findSlideIndex(slides, state.currentSlideId)
+  const currentIndex = Math.max(findSlideIndex(slides, state.currentSlideId), 0)
   const result = calculateResult(match, state.votes)
 
   useEffect(() => {
@@ -46,7 +46,9 @@ export function ControllerView({ match, slides, state, validation, dispatch }: C
         <section className="controller-section">
           <p className="ui-eyebrow">控制台</p>
           <h1>{match.match.competitionId}</h1>
-          <span>{slides[currentIndex]?.label ?? '总览'} · {currentIndex + 1}/{slides.length}</span>
+          <span>
+            {slides[currentIndex]?.label ?? '总览'} · {currentIndex + 1}/{slides.length}
+          </span>
         </section>
 
         <ValidationSummary validation={validation} />
