@@ -327,7 +327,7 @@ select:disabled {
   border-radius: 8px;
 }
 
-.judge-vote-row > div:first-child {
+.judge-vote-row>div:first-child {
   display: grid;
   grid-template-columns: 44px 1fr auto;
   gap: 10px;
@@ -573,45 +573,6 @@ select:disabled {
   align-items: end;
 }
 
-.person-card {
-  display: grid;
-  gap: 12px;
-  min-width: 0;
-  padding: 12px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #ffffff;
-}
-
-.person-card img {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  border-radius: 8px;
-  object-fit: cover;
-}
-
-.person-card strong {
-  display: block;
-  overflow-wrap: anywhere;
-  font-size: 1.35rem;
-}
-
-.person-card span {
-  color: var(--muted);
-  font-weight: 700;
-}
-
-.judge-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: auto;
-}
-
-.judge-card {
-  text-align: center;
-}
-
 .session-slide {
   background: linear-gradient(135deg, #f8fafc 0%, #e5e7eb 100%);
 }
@@ -649,7 +610,7 @@ select:disabled {
   line-height: 1.1;
 }
 
-.session-copy > span {
+.session-copy>span {
   color: var(--muted);
   font-size: 1.55rem;
   font-weight: 800;
@@ -841,6 +802,7 @@ select:disabled {
 }
 
 @media (max-width: 1100px) {
+
   .launcher-shell,
   .controller-shell {
     grid-template-columns: 1fr;
@@ -856,6 +818,7 @@ select:disabled {
 }
 
 @media (max-width: 760px) {
+
   .launcher-shell,
   .controller-shell {
     padding: 16px;
